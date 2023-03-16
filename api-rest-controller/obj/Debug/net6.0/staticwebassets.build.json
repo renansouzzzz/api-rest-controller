@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "AKGlC6JLqu5yd8U2YdR6emXvnSYwh5H6lP/9LZ31jNw=",
+  "Source": "api-rest-controller",
+  "BasePath": "_content/api-rest-controller",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
