@@ -8,13 +8,11 @@ namespace api_rest_controller.src.Controllers;
 public class CustomerController : ControllerBase
 
 {
-    private static int id = 1;
     private static List<Customer> customers = new List<Customer>();
 
     [HttpPost]
     public void AddCustomers([FromBody] Customer customer)
-    {
-        customer.Id = id++;
+    { 
         customers.Add(customer);
     }
 
