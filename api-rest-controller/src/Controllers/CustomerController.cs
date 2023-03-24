@@ -1,4 +1,7 @@
 ﻿using api_rest_controller.Models;
+using api_rest_controller.src.Data;
+using api_rest_controller.src.Data.Dtos;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api_rest_controller.src.Controllers;
@@ -8,36 +11,57 @@ namespace api_rest_controller.src.Controllers;
 public class CustomerController : ControllerBase
 
 {
-    private static List<Customer> customers = new List<Customer>();
+    private CustomerContext _customerContext;
+    private IMapper _mapper;
+
+    public CustomerController(CustomerContext customerContext, IMapper mapper)
+    {
+        _customerContext = customerContext;
+        _mapper = mapper;
+    }
 
     [HttpPost]
-    public void AddCustomers([FromBody] Customer customer)
-    { 
-        customers.Add(customer);
+    public void AddCustomers(
+        [FromBody] CreateCustomerDto customerDto)
+    {
+        Customer customer = _mapper.Map<Customer>(customerDto);
+        _customerContext.Customers.Add(customer);
+        _customerContext.SaveChanges();
     }
 
     [HttpGet]
     public IEnumerable<Customer> GetCustomers()
     {
-        return customers;
+        return _customerContext.Customers;
     }
 
     [HttpGet("{id}")]
     public Customer? GetCustomerById(long id)
     {
-        return customers.FirstOrDefault(customer => customer.Id.Equals(id));
+        return _customerContext.Customers.FirstOrDefault(customer => customer.Id.Equals(id));
     }
 
     [HttpGet("page")]
     public IEnumerable<Customer> GetCustomersByPage([FromQuery] int page)
     {
-        if (page <= 0 || page > customers.Count) { return customers; }
-        else if (page == 1) { return customers.Take(10); }
+        page = page * 10 - 10;
 
-        else
-        {
-            page = page * 10 - 10;
-        }
-        return customers.Skip(page).Take(10);
+        return _customerContext.Customers.Skip(page).Take(10);
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult UpdateCustomer(long id, [FromBody] UpdateCustomerDto uptCustomer)
+    {
+        var customer = _customerContext
+            .Customers
+            .FirstOrDefault(
+            customer => customer.Id == id);
+
+        if (customer == null) { return NotFound(); }
+
+        _mapper.Map(uptCustomer, customer);
+        _customerContext.SaveChanges();
+
+        return NoContent();
     }
 }
