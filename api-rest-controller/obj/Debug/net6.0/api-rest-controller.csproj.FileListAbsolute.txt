@@ -183,3 +183,6 @@ C:\Users\Computer\source\repos\api-rest-controller\api-rest-controller\bin\Debug
 C:\Users\Computer\source\repos\api-rest-controller\api-rest-controller\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Computer\source\repos\api-rest-controller\api-rest-controller\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Computer\source\repos\api-rest-controller\api-rest-controller\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Computer\source\repos\api-rest-controller\api-rest-controller\bin\Debug\net6.0\FsCheck.dll
+C:\Users\Computer\source\repos\api-rest-controller\api-rest-controller\bin\Debug\net6.0\FSharp.Core.dll
+C:\Users\Computer\source\repos\api-rest-controller\api-rest-controller\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll

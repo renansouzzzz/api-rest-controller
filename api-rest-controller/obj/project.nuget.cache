@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "eT1+H4G8cLIQVe5yUlaMNHhiffOPrJlxFHMCHiC38hwJ/qYACoegXycIH0ie9v0h6SEqkSfaKO+e0mdBo5986g==",
+  "dgSpecHash": "7YRvkl0lIunYDZuRhmMxsOLMMlVh+5QIybcSGsNedqgyTuXTHbQf3vSY6nF7SiAdJy8/wXqNnbDY94SyTquLUg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Computer\\source\\repos\\api-rest-controller\\api-rest-controller\\api-rest-controller.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\Computer\\.nuget\\packages\\lamarcodegeneration\\6.1.4\\lamarcodegeneration.6.1.4.nupkg.sha512",
     "C:\\Users\\Computer\\.nuget\\packages\\lamarcompiler\\6.1.4\\lamarcompiler.6.1.4.nupkg.sha512",
     "C:\\Users\\Computer\\.nuget\\packages\\marten\\5.11.0\\marten.5.11.0.nupkg.sha512",
+    "C:\\Users\\Computer\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\7.0.4\\microsoft.aspnetcore.jsonpatch.7.0.4.nupkg.sha512",
     "C:\\Users\\Computer\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\Computer\\.nuget\\packages\\microsoft.codeanalysis\\4.1.0\\microsoft.codeanalysis.4.1.0.nupkg.sha512",
     "C:\\Users\\Computer\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",

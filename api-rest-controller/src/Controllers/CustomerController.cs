@@ -2,6 +2,7 @@
 using api_rest_controller.src.Data;
 using api_rest_controller.src.Data.Dtos;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api_rest_controller.src.Controllers;
@@ -62,6 +63,47 @@ public class CustomerController : ControllerBase
         _mapper.Map(uptCustomer, customer);
         _customerContext.SaveChanges();
 
+        return NoContent();
+    }
+
+    [HttpPatch("{id}")]
+    public IActionResult UpdateCustomerPatch(long id,
+        JsonPatchDocument<UpdateCustomerDto> patch)
+    {
+        var customer = _customerContext
+            .Customers
+            .FirstOrDefault(
+            customer => customer.Id == id);
+
+        var customerMap = _mapper.Map<UpdateCustomerDto>(customer);
+
+        patch.ApplyTo(customerMap, (Microsoft
+            .AspNetCore
+            .JsonPatch
+            .Adapters
+            .IObjectAdapter)ModelState);
+
+        if (!TryValidateModel(customerMap))
+        {
+            return ValidationProblem(ModelState);
+        }
+
+        _mapper.Map(customerMap, customer);
+        _customerContext.SaveChanges();
+
+        return NoContent();
+    }
+
+    [HttpDelete("id")]
+    public IActionResult DeleteCustomer(long id)
+    {
+        var customer = _customerContext.Customers.FirstOrDefault(
+            customer => customer.Id == id);
+
+        if(customer == null) { return NotFound(); }
+
+        _customerContext.Remove(customer);
+        
         return NoContent();
     }
 }
