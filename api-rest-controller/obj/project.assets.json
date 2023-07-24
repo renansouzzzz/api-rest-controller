@@ -7778,19 +7778,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Computer\\.nuget\\packages\\": {}
+    "C:\\Users\\Computador\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Computer\\source\\repos\\api-rest-controller\\api-rest-controller\\api-rest-controller.csproj",
+      "projectUniqueName": "C:\\Users\\Computador\\Desktop\\projects\\api-rest-controller\\api-rest-controller\\api-rest-controller.csproj",
       "projectName": "api-rest-controller",
-      "projectPath": "C:\\Users\\Computer\\source\\repos\\api-rest-controller\\api-rest-controller\\api-rest-controller.csproj",
-      "packagesPath": "C:\\Users\\Computer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Computer\\source\\repos\\api-rest-controller\\api-rest-controller\\obj\\",
+      "projectPath": "C:\\Users\\Computador\\Desktop\\projects\\api-rest-controller\\api-rest-controller\\api-rest-controller.csproj",
+      "packagesPath": "C:\\Users\\Computador\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Computador\\Desktop\\projects\\api-rest-controller\\api-rest-controller\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Computer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Computador\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7798,6 +7798,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7874,7 +7875,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

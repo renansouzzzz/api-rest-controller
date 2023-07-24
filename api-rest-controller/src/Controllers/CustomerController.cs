@@ -25,6 +25,7 @@ public class CustomerController : ControllerBase
     public void AddCustomers(
         [FromBody] CreateCustomerDto customerDto)
     {
+
         Customer customer = _mapper.Map<Customer>(customerDto);
         _customerContext.Customers.Add(customer);
         _customerContext.SaveChanges();
