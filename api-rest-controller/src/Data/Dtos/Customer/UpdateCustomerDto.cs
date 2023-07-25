@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace api_rest_controller.src.Data.Dtos;
+namespace api_rest_controller.src.Data.Dtos.Customer;
 
 public class UpdateCustomerDto
 {
-
     [Required(ErrorMessage = "O nome é obrigatório!")]
     public string Name { get; set; }
     [Required(ErrorMessage = "A idade é obrigatória!")]

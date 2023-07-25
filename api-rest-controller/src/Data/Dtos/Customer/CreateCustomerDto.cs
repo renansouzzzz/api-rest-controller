@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace api_rest_controller.src.Data.Dtos;
+namespace api_rest_controller.src.Data.Dtos.Customer;
 
 public class CreateCustomerDto
 {

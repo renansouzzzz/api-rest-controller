@@ -1,6 +1,6 @@
 ﻿using api_rest_controller.Models;
 using api_rest_controller.src.Data;
-using api_rest_controller.src.Data.Dtos;
+using api_rest_controller.src.Data.Dtos.Customer;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -40,7 +40,9 @@ public class CustomerController : ControllerBase
     [HttpGet("{id}")]
     public Customer? GetCustomerById(long id)
     {
-        return _customerContext.Customers.FirstOrDefault(customer => customer.Id.Equals(id));
+        return _customerContext
+            .Customers
+            .FirstOrDefault(customer => customer.Id.Equals(id));
     }
 
     [HttpGet("page")]
@@ -48,7 +50,9 @@ public class CustomerController : ControllerBase
     {
         page = page * 10 - 10;
 
-        return _customerContext.Customers.Skip(page).Take(10);
+        return _customerContext
+            .Customers.Skip(page)
+            .Take(10);
     }
 
     [HttpPut("{id}")]

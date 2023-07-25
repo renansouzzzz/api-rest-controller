@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using api_rest_controller.Models;
-using api_rest_controller.src.Data.Dtos;
+using api_rest_controller.src.Data.Dtos.Customer;
 
 namespace api_rest_controller.src.Profiles;
 
