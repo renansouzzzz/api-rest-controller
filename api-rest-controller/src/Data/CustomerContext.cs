@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api_rest_controller.src.Data;
 
-public class CustomerContext : DbContext
+public class ApiContext : DbContext
 {
-    public CustomerContext(DbContextOptions<CustomerContext> opts)
+    public ApiContext(DbContextOptions<ApiContext> opts)
         : base(opts)
     {
         

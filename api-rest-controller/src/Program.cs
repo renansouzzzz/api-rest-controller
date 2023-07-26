@@ -9,7 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("CustomerConnection");
-builder.Services.AddDbContext<CustomerContext>(
+builder.Services.AddDbContext<ApiContext>(
     opts => opts.UseMySql(connectionString, 
     ServerVersion.AutoDetect(connectionString)));
 

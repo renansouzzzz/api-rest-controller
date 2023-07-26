@@ -4,6 +4,7 @@ using api_rest_controller.src.Data.Dtos.Customer;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace api_rest_controller.src.Controllers;
 
@@ -12,12 +13,12 @@ namespace api_rest_controller.src.Controllers;
 public class CustomerController : ControllerBase
 
 {
-    private CustomerContext _customerContext;
+    private ApiContext _ApiContext;
     private IMapper _mapper;
 
-    public CustomerController(CustomerContext customerContext, IMapper mapper)
+    public CustomerController(ApiContext ApiContext, IMapper mapper)
     {
-        _customerContext = customerContext;
+        _ApiContext = ApiContext;
         _mapper = mapper;
     }
 
@@ -27,22 +28,27 @@ public class CustomerController : ControllerBase
     {
 
         Customer customer = _mapper.Map<Customer>(customerDto);
-        _customerContext.Customers.Add(customer);
-        _customerContext.SaveChanges();
+        _ApiContext.Customers.Add(customer);
+        _ApiContext.SaveChanges();
     }
 
     [HttpGet]
     public IEnumerable<Customer> GetCustomers()
     {
-        return _customerContext.Customers;
+        return _ApiContext.Customers;
     }
 
     [HttpGet("{id}")]
-    public Customer? GetCustomerById(long id)
+    public ActionResult<Customer?> GetCustomerById(Guid id)
     {
-        return _customerContext
+        var customer = _ApiContext
             .Customers
-            .FirstOrDefault(customer => customer.Id.Equals(id));
+            .FirstOrDefault(customer => customer.Id.Equals(id)); ;
+
+        if (customer is null)
+            return NotFound();        
+
+        return Ok(customer);
     }
 
     [HttpGet("page")]
@@ -50,32 +56,34 @@ public class CustomerController : ControllerBase
     {
         page = page * 10 - 10;
 
-        return _customerContext
+        return _ApiContext
             .Customers.Skip(page)
             .Take(10);
     }
 
     [HttpPut("{id}")]
-    public IActionResult UpdateCustomer(long id, [FromBody] UpdateCustomerDto uptCustomer)
+    public ActionResult UpdateCustomer(long id, [FromBody] UpdateCustomerDto uptCustomer)
     {
-        var customer = _customerContext
+        var customer = _ApiContext
             .Customers
             .FirstOrDefault(
             customer => customer.Id == id);
 
-        if (customer == null) { return NotFound(); }
+        if (customer == null) 
+            return NotFound(); 
 
         _mapper.Map(uptCustomer, customer);
-        _customerContext.SaveChanges();
+
+        _ApiContext.SaveChanges();
 
         return NoContent();
     }
 
     [HttpPatch("{id}")]
-    public IActionResult UpdateCustomerPatch(long id,
+    public ActionResult UpdateCustomerPatch(long id,
         JsonPatchDocument<UpdateCustomerDto> patch)
     {
-        var customer = _customerContext
+        var customer = _ApiContext
             .Customers
             .FirstOrDefault(
             customer => customer.Id == id);
@@ -89,25 +97,25 @@ public class CustomerController : ControllerBase
             .IObjectAdapter)ModelState);
 
         if (!TryValidateModel(customerMap))
-        {
             return ValidationProblem(ModelState);
-        }
 
         _mapper.Map(customerMap, customer);
-        _customerContext.SaveChanges();
+        _ApiContext.SaveChanges();
 
         return NoContent();
     }
 
     [HttpDelete("id")]
-    public IActionResult DeleteCustomer(long id)
+    public ActionResult DeleteCustomer(long id)
     {
-        var customer = _customerContext.Customers.FirstOrDefault(
-            customer => customer.Id == id);
+        var customer = _ApiContext
+            .Customers
+            .FirstOrDefault(customer => customer.Id == id);
 
-        if(customer == null) { return NotFound(); }
+        if(customer == null) 
+            return NotFound(); 
 
-        _customerContext.Remove(customer);
+        _ApiContext.Remove(customer);
         
         return NoContent();
     }
