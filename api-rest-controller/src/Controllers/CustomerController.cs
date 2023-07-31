@@ -4,7 +4,6 @@ using api_rest_controller.src.Data.Dtos.Customer;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace api_rest_controller.src.Controllers;
 
@@ -13,35 +12,37 @@ namespace api_rest_controller.src.Controllers;
 public class CustomerController : ControllerBase
 
 {
-    private ApiContext _ApiContext;
+    private ApiContext _apiContext;
     private IMapper _mapper;
 
-    public CustomerController(ApiContext ApiContext, IMapper mapper)
+    public CustomerController(ApiContext apiContext, IMapper mapper)
     {
-        _ApiContext = ApiContext;
+        _apiContext = apiContext;
         _mapper = mapper;
     }
 
     [HttpPost]
-    public void AddCustomers(
+    public ActionResult<Customer> AddCustomers(
         [FromBody] CreateCustomerDto customerDto)
     {
 
         Customer customer = _mapper.Map<Customer>(customerDto);
-        _ApiContext.Customers.Add(customer);
-        _ApiContext.SaveChanges();
+        _apiContext.Customers.Add(customer);
+        _apiContext.SaveChanges();
+
+        return Ok(customer);
     }
 
     [HttpGet]
-    public IEnumerable<Customer> GetCustomers()
+    public IEnumerable<Customer> Get()
     {
-        return _ApiContext.Customers;
+        return _apiContext.Customers;
     }
 
     [HttpGet("{id}")]
-    public ActionResult<Customer?> GetCustomerById(Guid id)
+    public ActionResult<Customer?> GetById(Guid id)
     {
-        var customer = _ApiContext
+        var customer = _apiContext
             .Customers
             .FirstOrDefault(customer => customer.Id.Equals(id)); ;
 
@@ -52,19 +53,19 @@ public class CustomerController : ControllerBase
     }
 
     [HttpGet("page")]
-    public IEnumerable<Customer> GetCustomersByPage([FromQuery] int page)
+    public IEnumerable<Customer> GetByPage([FromQuery] int page)
     {
         page = page * 10 - 10;
 
-        return _ApiContext
+        return _apiContext
             .Customers.Skip(page)
             .Take(10);
     }
 
     [HttpPut("{id}")]
-    public ActionResult UpdateCustomer(long id, [FromBody] UpdateCustomerDto uptCustomer)
+    public ActionResult Update(long id, [FromBody] UpdateCustomerDto uptCustomer)
     {
-        var customer = _ApiContext
+        var customer = _apiContext
             .Customers
             .FirstOrDefault(
             customer => customer.Id == id);
@@ -74,16 +75,16 @@ public class CustomerController : ControllerBase
 
         _mapper.Map(uptCustomer, customer);
 
-        _ApiContext.SaveChanges();
+        _apiContext.SaveChanges();
 
         return NoContent();
     }
 
     [HttpPatch("{id}")]
-    public ActionResult UpdateCustomerPatch(long id,
+    public ActionResult UpdatePatch(long id,
         JsonPatchDocument<UpdateCustomerDto> patch)
     {
-        var customer = _ApiContext
+        var customer = _apiContext
             .Customers
             .FirstOrDefault(
             customer => customer.Id == id);
@@ -100,22 +101,22 @@ public class CustomerController : ControllerBase
             return ValidationProblem(ModelState);
 
         _mapper.Map(customerMap, customer);
-        _ApiContext.SaveChanges();
+        _apiContext.SaveChanges();
 
         return NoContent();
     }
 
     [HttpDelete("id")]
-    public ActionResult DeleteCustomer(long id)
+    public ActionResult Delete(long id)
     {
-        var customer = _ApiContext
+        var customer = _apiContext
             .Customers
             .FirstOrDefault(customer => customer.Id == id);
 
         if(customer == null) 
             return NotFound(); 
 
-        _ApiContext.Remove(customer);
+        _apiContext.Remove(customer);
         
         return NoContent();
     }

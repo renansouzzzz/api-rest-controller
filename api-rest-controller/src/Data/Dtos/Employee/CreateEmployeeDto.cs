@@ -18,4 +18,13 @@ public class CreateEmployeeDto
     public string Country { get; set; }
 
     public string Phone { get; set; }
+
+
+    public bool Equals(CreateEmployeeDto? other)
+    {
+        if (!ReferenceEquals(other, this))
+            return false;
+
+        return true;
+    }
 }
