@@ -195,13 +195,9 @@ C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin
 C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\api-rest-controller.pdb
 C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\Baseline.dll
-C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\BaselineTypeDiscovery.dll
 C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\FsCheck.dll
 C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\FSharp.Core.dll
 C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\Humanizer.dll
-C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\LamarCodeGeneration.dll
-C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\LamarCompiler.dll
 C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\Marten.dll
 C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -374,3 +370,12 @@ C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\obj
 C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\obj\Debug\net6.0\api-rest-controller.pdb
 C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\obj\Debug\net6.0\api-rest-controller.genruntimeconfig.cache
 C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\obj\Debug\net6.0\ref\api-rest-controller.dll
+C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\FastExpressionCompiler.dll
+C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\JasperFx.CodeGeneration.dll
+C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\JasperFx.Core.dll
+C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\JasperFx.RuntimeCompiler.dll
+C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\System.IO.Pipelines.dll
+C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\System.Reflection.Metadata.dll
+C:\Users\Computador\Desktop\projects\api-rest-controller\api-rest-controller\bin\Debug\net6.0\System.Threading.Tasks.Dataflow.dll

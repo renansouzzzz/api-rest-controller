@@ -1,5 +1,6 @@
 ﻿using api_rest_controller.Models;
 using api_rest_controller.src.Data.Dtos;
+using api_rest_controller.src.Data.Dtos.Employee;
 using AutoMapper;
 
 namespace api_rest_controller.src.Profiles;

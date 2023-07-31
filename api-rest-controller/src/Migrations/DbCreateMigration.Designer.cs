@@ -9,7 +9,7 @@ using api_rest_controller.src.Data;
 
 namespace api_rest_controller.Migrations
 {
-    [DbContext(typeof(CustomerContext))]
+    [DbContext(typeof(ApiContext))]
     [Migration("20230323204629_DbCreateMigration")]
     partial class DbCreateMigration
     {

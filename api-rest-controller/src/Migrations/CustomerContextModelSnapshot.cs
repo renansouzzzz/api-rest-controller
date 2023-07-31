@@ -8,8 +8,8 @@ using api_rest_controller.src.Data;
 
 namespace api_rest_controller.Migrations;
 
-[DbContext(typeof(CustomerContext))]
-partial class CustomerContextModelSnapshot : ModelSnapshot
+[DbContext(typeof(ApiContext))]
+partial class ApiContextModelSnapshot : ModelSnapshot
 {
     protected override void BuildModel(ModelBuilder modelBuilder)
     {
