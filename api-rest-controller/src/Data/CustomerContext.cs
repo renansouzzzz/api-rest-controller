@@ -8,7 +8,6 @@ public class ApiContext : DbContext
     public ApiContext(DbContextOptions<ApiContext> opts)
         : base(opts)
     {
-        
     }
 
     public DbSet<Customer> Customers { get; set; }
