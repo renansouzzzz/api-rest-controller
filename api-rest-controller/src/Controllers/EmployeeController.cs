@@ -1,8 +1,8 @@
-﻿using api_rest_controller.src.Data;
+﻿using api_rest_controller.Models;
+using api_rest_controller.src.Data;
 using api_rest_controller.src.Data.Dtos.Employee;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Immutable;
 
 namespace api_rest_controller.src.Controllers;
 
@@ -24,12 +24,7 @@ public class EmployeeController
     {
         var employees = _context.Employees;
 
-        ImmutableArray<Employee> array = ImmutableArray.Create<Employee>();
-
-        foreach (var employee in employees)
-            array = array.Add(employee);
-
-        return _context.Employees;
+        return employees;
     }
 
     [HttpPost]
@@ -46,5 +41,25 @@ public class EmployeeController
         _context.ChangeTracker.Clear();
 
         return employee;
+    }
+
+    [HttpPut("{id}")]
+    public Employee Update(long id, [FromBody] UpdateEmployeeDto employee)
+    {
+        var selectId = _context
+            .Employees
+            .FirstOrDefault(x => x.Id == id);
+
+        Employee employeeModel = _mapper.Map<Employee>(employee);
+
+        if (selectId != null)
+            _mapper.Map(employee, selectId);
+
+        _context.SaveChanges();
+
+        _context.ChangeTracker.Clear();
+
+        return employeeModel;
+
     }
 }
