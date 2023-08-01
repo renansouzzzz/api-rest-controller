@@ -44,7 +44,7 @@ public class CustomerController : ControllerBase
     {
         var customer = _apiContext
             .Customers
-            .FirstOrDefault(customer => customer.Id.Equals(id)); ;
+            .FirstOrDefault(customer => customer.Id.Equals(id));
 
         if (customer is null)
             return NotFound();        
