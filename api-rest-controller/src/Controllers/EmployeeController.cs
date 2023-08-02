@@ -27,6 +27,18 @@ public class EmployeeController
         return employees;
     }
 
+    [HttpGet("{id}")]
+    public Employee GetById(long id)
+    {
+        var employee = _context.Employees
+            .FirstOrDefault(x => x.Id == id);
+
+        if (employee == null) 
+            return null!;
+
+        return employee;
+    }
+
     [HttpPost]
     public CreateEmployeeDto Insert([FromBody] CreateEmployeeDto employee)
     {
@@ -61,5 +73,21 @@ public class EmployeeController
 
         return employeeModel;
 
+    }
+
+    [HttpDelete]
+    public string Delete(long id)
+    {
+        var selectEmployee = _context.Employees
+            .FirstOrDefault(x => x.Id == id);
+
+        if (selectEmployee != null)
+            _context.Employees.Remove(selectEmployee);
+        
+        _context.SaveChanges();
+
+        _context.ChangeTracker.Clear();
+        
+        return "Funcionário excluído com sucesso!";
     }
 }
