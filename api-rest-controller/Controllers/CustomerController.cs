@@ -22,7 +22,7 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Customer> AddCustomers(
+    public ActionResult<Customer> Insert(
         [FromBody] CreateCustomerDto customerDto)
     {
 
