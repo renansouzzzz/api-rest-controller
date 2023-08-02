@@ -3,6 +3,7 @@ using api_rest_controller.Data.Dtos.Employee;
 using api_rest_controller.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Immutable;
 
 namespace api_rest_controller.Controllers;
 
@@ -89,5 +90,25 @@ public class EmployeeController
         _context.ChangeTracker.Clear();
 
         return "Funcionário excluído com sucesso!";
+    }
+
+    [HttpPost]
+    public ImmutableArray<Employee> InsertRange([FromBody] IEnumerable<CreateEmployeeDto> employees)
+    {
+        ImmutableArray<Employee> employeesArray = ImmutableArray.Create<Employee>();
+
+        foreach (var employee in employees)
+        {
+            Employee employeeModel = _mapper.Map<Employee>(employee);
+            employeesArray = employeesArray.Add(employeeModel);
+        }
+
+        _context.Employees.AddRange(employeesArray);
+
+        _context.SaveChanges();
+
+        _context.ChangeTracker.Clear();
+
+        return employeesArray;
     }
 }
