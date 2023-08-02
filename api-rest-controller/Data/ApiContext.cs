@@ -1,7 +1,7 @@
 ﻿using api_rest_controller.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace api_rest_controller.src.Data;
+namespace api_rest_controller.Data;
 
 public class ApiContext : DbContext
 {
