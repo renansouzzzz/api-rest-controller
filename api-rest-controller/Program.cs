@@ -1,4 +1,4 @@
-using api_rest_controller.src.Data;
+using api_rest_controller.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

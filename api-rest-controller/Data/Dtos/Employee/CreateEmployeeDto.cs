@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace api_rest_controller.src.Data.Dtos.Employee;
+namespace api_rest_controller.Data.Dtos.Employee;
 
 public class CreateEmployeeDto
 {

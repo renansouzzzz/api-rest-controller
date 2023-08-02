@@ -1,11 +1,11 @@
-﻿using api_rest_controller.Models;
-using api_rest_controller.src.Data;
-using api_rest_controller.src.Data.Dtos.Customer;
+﻿using api_rest_controller.Data;
+using api_rest_controller.Data.Dtos.Customer;
+using api_rest_controller.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
-namespace api_rest_controller.src.Controllers;
+namespace api_rest_controller.Controllers;
 
 [ApiController]
 [Route("/api/v1/[controller]")]
@@ -47,7 +47,7 @@ public class CustomerController : ControllerBase
             .FirstOrDefault(customer => customer.Id.Equals(id));
 
         if (customer is null)
-            return NotFound();        
+            return NotFound();
 
         return Ok(customer);
     }
@@ -70,8 +70,8 @@ public class CustomerController : ControllerBase
             .FirstOrDefault(
             customer => customer.Id == id);
 
-        if (customer == null) 
-            return NotFound(); 
+        if (customer == null)
+            return NotFound();
 
         _mapper.Map(uptCustomer, customer);
 
@@ -113,11 +113,11 @@ public class CustomerController : ControllerBase
             .Customers
             .FirstOrDefault(customer => customer.Id == id);
 
-        if(customer == null) 
-            return NotFound(); 
+        if (customer == null)
+            return NotFound();
 
         _apiContext.Remove(customer);
-        
+
         return NoContent();
     }
 }

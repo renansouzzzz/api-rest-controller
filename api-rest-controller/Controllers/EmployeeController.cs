@@ -1,10 +1,10 @@
-﻿using api_rest_controller.Models;
-using api_rest_controller.src.Data;
-using api_rest_controller.src.Data.Dtos.Employee;
+﻿using api_rest_controller.Data;
+using api_rest_controller.Data.Dtos.Employee;
+using api_rest_controller.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
-namespace api_rest_controller.src.Controllers;
+namespace api_rest_controller.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
@@ -33,7 +33,7 @@ public class EmployeeController
         var employee = _context.Employees
             .FirstOrDefault(x => x.Id == id);
 
-        if (employee == null) 
+        if (employee == null)
             return null!;
 
         return employee;
@@ -83,11 +83,11 @@ public class EmployeeController
 
         if (selectEmployee != null)
             _context.Employees.Remove(selectEmployee);
-        
+
         _context.SaveChanges();
 
         _context.ChangeTracker.Clear();
-        
+
         return "Funcionário excluído com sucesso!";
     }
 }
