@@ -41,19 +41,25 @@ public class EmployeeController
     }
 
     [HttpPost]
-    public CreateEmployeeDto Insert([FromBody] CreateEmployeeDto employee)
+    public IEnumerable<Employee> Insert([FromBody] IEnumerable<CreateEmployeeDto> employees)
     {
-        Employee employeeModel = _mapper
-            .Map<Employee>(employee);
+        ImmutableArray<Employee> employeeArray = ImmutableArray.Create<Employee>();
 
+        foreach (var employee in employees)
+        {
+            Employee employeeModel = _mapper
+                .Map<Employee>(employee);
 
-        _context.Employees.Add(employeeModel);
+            employeeArray = employeeArray.Add(employeeModel);
+        }
+
+        _context.Employees.AddRange(employeeArray);
 
         _context.SaveChanges();
 
         _context.ChangeTracker.Clear();
 
-        return employee;
+        return employeeArray;
     }
 
     [HttpPut("{id}")]
@@ -90,25 +96,5 @@ public class EmployeeController
         _context.ChangeTracker.Clear();
 
         return "Funcionário excluído com sucesso!";
-    }
-
-    [HttpPost]
-    public IEnumerable<Employee> InsertRange([FromBody] IEnumerable<CreateEmployeeDto> employees)
-    {
-        List<Employee> employeesList = new List<Employee>(); 
-
-        foreach (var employee in employees)
-        {
-            Employee employeeModel = _mapper.Map<Employee>(employee);
-            employeesList.Add(employeeModel);
-        }
-
-        _context.Employees.AddRange(employeesList);
-
-        _context.SaveChanges();
-
-        _context.ChangeTracker.Clear();
-
-        return employeesList;
     }
 }
