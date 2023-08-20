@@ -1,6 +1,5 @@
 ﻿using api_rest_controller.Data;
 using api_rest_controller.Data.Dtos.Employee;
-using api_rest_controller.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Immutable;
@@ -34,7 +33,7 @@ public class EmployeeController
         var employee = _context.Employees
             .FirstOrDefault(x => x.Id == id);
 
-        if (employee == null)
+        if (employee is null)
             return null!;
 
         return employee;
