@@ -93,22 +93,22 @@ public class EmployeeController
     }
 
     [HttpPost]
-    public ImmutableArray<Employee> InsertRange([FromBody] IEnumerable<CreateEmployeeDto> employees)
+    public IEnumerable<Employee> InsertRange([FromBody] IEnumerable<CreateEmployeeDto> employees)
     {
-        ImmutableArray<Employee> employeesArray = ImmutableArray.Create<Employee>();
+        List<Employee> employeesList = new List<Employee>(); 
 
         foreach (var employee in employees)
         {
             Employee employeeModel = _mapper.Map<Employee>(employee);
-            employeesArray = employeesArray.Add(employeeModel);
+            employeesList.Add(employeeModel);
         }
 
-        _context.Employees.AddRange(employeesArray);
+        _context.Employees.AddRange(employeesList);
 
         _context.SaveChanges();
 
         _context.ChangeTracker.Clear();
 
-        return employeesArray;
+        return employeesList;
     }
 }
